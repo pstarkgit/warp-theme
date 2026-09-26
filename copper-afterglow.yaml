@@ -1,0 +1,29 @@
+name: Copper Afterglow
+accent:
+  left: '#B94D2B'
+  right: '#F29A58'
+cursor: '#FFD08A'
+background:
+  top: '#1C110D'
+  bottom: '#0D0A09'
+foreground: '#F3E3D1'
+details: darker
+terminal_colors:
+  normal:
+    black: '#241712'
+    red: '#F06B57'
+    green: '#A7C982'
+    yellow: '#F2BE65'
+    blue: '#7EAFC0'
+    magenta: '#CE91AA'
+    cyan: '#69C5B6'
+    white: '#E9D8C5'
+  bright:
+    black: '#75574A'
+    red: '#FF917B'
+    green: '#C2E49A'
+    yellow: '#FFD58A'
+    blue: '#A2D0DE'
+    magenta: '#E7ADC4'
+    cyan: '#91E1D0'
+    white: '#FFF4E8'
