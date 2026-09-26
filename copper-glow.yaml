@@ -1,0 +1,30 @@
+name: Copper Glow
+accent:
+  left: '#C34C25'
+  right: '#FF9B3D'
+cursor: '#FFD28A'
+background: '#090807'
+foreground: '#F2E3D1'
+details: darker
+background_image:
+  path: copper-glow.jpg
+  opacity: 62
+terminal_colors:
+  normal:
+    black: '#21130E'
+    red: '#E75F3E'
+    green: '#76B79E'
+    yellow: '#F2A13F'
+    blue: '#477F91'
+    magenta: '#B878A0'
+    cyan: '#55B4B5'
+    white: '#E4C8AA'
+  bright:
+    black: '#705345'
+    red: '#FF8968'
+    green: '#A1D8B5'
+    yellow: '#FFD080'
+    blue: '#79BDD0'
+    magenta: '#D89BBC'
+    cyan: '#91E0D5'
+    white: '#FFF1DF'
