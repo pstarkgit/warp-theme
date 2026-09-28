@@ -300,11 +300,17 @@
   <script>
     const themes = [
       { slug: "aurora-tide", name: "Aurora Tide", type: "Aurora series", description: "Sea-glass green, glacial blue, and a low violet shimmer. The calmest way to keep the northern lights at your desk.", base: "#091316", fg: "#E5F5EF", accent: "#5CCDB5", accent2: "#A6E3D3", palette: ["#091316", "#3EE0BA", "#87B5FC", "#B18AF4", "#E5F5EF"] },
-      { slug: "aurora-prism", name: "Aurora Prism", type: "Aurora series", description: "Electric ice blue folds into lavender and rose. A brighter, more playful aurora with a dark indigo center.", base: "#0C0D1C", fg: "#EEEFFD", accent: "#86B5FF", accent2: "#DBA6F7", palette: ["#0C0D1C", "#69B9FF", "#A186F7", "#EE82BA", "#EEEFFD"] },
+      { slug: "aurora-prism", name: "Aurora Prism", type: "Aurora series", description: "Soft ice blue folds into lavender and rose. A subtle aurora glow against a dark indigo center.", base: "#0C0D1C", fg: "#EEEFFD", accent: "#86B5FF", accent2: "#DBA6F7", wallpaperOpacity: 25, palette: ["#0C0D1C", "#69B9FF", "#A186F7", "#EE82BA", "#EEEFFD"] },
       { slug: "aurora-canopy", name: "Aurora Canopy", type: "Aurora series", description: "Luminous jade and lime drift through a forest-dark sky, touched by a soft gold horizon.", base: "#0D1510", fg: "#ECF2E5", accent: "#A7D774", accent2: "#71CDB1", palette: ["#0D1510", "#99E274", "#4ED5AE", "#E4D475", "#ECF2E5"] },
       { slug: "orchid-haze", name: "Orchid Haze", type: "Glow series", description: "A velvet violet dusk with orchid and blush light blooming at the edges of the terminal.", base: "#15101A", fg: "#F4EBF5", accent: "#D68EDE", accent2: "#F3ADC8", palette: ["#15101A", "#B87BEE", "#EE88C3", "#777DDC", "#F4EBF5"] },
       { slug: "solar-ember", name: "Solar Ember", type: "Glow series", description: "Copper Glow's sunlit cousin: deep charcoal-brown, amber heat, and a gentle rose afterglow.", base: "#170F0B", fg: "#F8EDE0", accent: "#EC874F", accent2: "#F5BE75", palette: ["#170F0B", "#F4773E", "#F9B35D", "#C6687B", "#F8EDE0"] }
     ];
+    function wallpaperBackground(theme) {
+      const image = `url("afterlight-${theme.slug}.png")`;
+      if (!theme.wallpaperOpacity) return image;
+      const alpha = Math.round((100 - theme.wallpaperOpacity) * 2.55).toString(16).padStart(2, "0");
+      return `linear-gradient(${theme.base}${alpha}, ${theme.base}${alpha}), ${image}`;
+    }
     const list = document.getElementById("theme-list");
     let selected = 0;
     themes.forEach((theme, index) => {
@@ -313,7 +319,7 @@
       button.className = "theme-card";
       button.setAttribute("aria-label", `Preview ${theme.name}`);
       button.innerHTML = `<span class="card-top"><span class="card-art" aria-hidden="true"></span><span><span class="card-num mono">${String(index + 1).padStart(2, "0")} / 05</span><span class="card-name"></span><span class="card-type"></span></span></span>`;
-      button.querySelector(".card-art").style.backgroundImage = `url("afterlight-${theme.slug}.png")`;
+      button.querySelector(".card-art").style.backgroundImage = wallpaperBackground(theme);
       button.querySelector(".card-name").textContent = `Afterlight - ${theme.name}`;
       button.querySelector(".card-type").textContent = theme.type;
       button.addEventListener("click", () => selectTheme(index));
@@ -330,7 +336,7 @@
       document.getElementById("theme-number").textContent = `${String(index + 1).padStart(2, "0")} of 05`;
       document.getElementById("theme-name").textContent = `Afterlight - ${theme.name}`;
       document.getElementById("theme-description").textContent = theme.description;
-      document.getElementById("terminal").style.backgroundImage = `url("afterlight-${theme.slug}.png")`;
+      document.getElementById("terminal").style.backgroundImage = wallpaperBackground(theme);
       document.getElementById("status-name").textContent = `✦ AFTERLIGHT - ${theme.name.toUpperCase()}`;
       document.getElementById("base-value").textContent = theme.base;
       document.getElementById("yaml-link").href = `afterlight-${theme.slug}.yaml`;

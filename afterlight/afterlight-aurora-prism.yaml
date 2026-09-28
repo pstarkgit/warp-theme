@@ -8,7 +8,7 @@ foreground: '#EEEFFD'
 details: darker
 background_image:
   path: afterlight-aurora-prism.jpg
-  opacity: 72
+  opacity: 25
 terminal_colors:
   normal:
     black: '#191A35'

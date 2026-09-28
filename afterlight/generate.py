@@ -30,6 +30,7 @@ THEMES = [
     {
         "slug": "aurora-prism",
         "name": "Aurora Prism",
+        "wallpaper_opacity": 25,
         "base": "#0C0D1C",
         "foreground": "#EEEFFD",
         "accent": ("#86B5FF", "#DBA6F7"),
@@ -147,7 +148,7 @@ def yaml_text(theme):
         "details: darker",
         "background_image:",
         f"  path: afterlight-{theme['slug']}.jpg",
-        "  opacity: 72",
+        f"  opacity: {theme.get('wallpaper_opacity', 72)}",
         "terminal_colors:",
     ]
     for key in ("normal", "bright"):
