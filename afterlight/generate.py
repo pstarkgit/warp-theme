@@ -30,7 +30,7 @@ THEMES = [
     {
         "slug": "aurora-prism",
         "name": "Aurora Prism",
-        "wallpaper_opacity": 10,
+        "wallpaper_opacity": 20,
         "base": "#0C0D1C",
         "foreground": "#EEEFFD",
         "accent": ("#86B5FF", "#DBA6F7"),
