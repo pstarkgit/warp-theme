@@ -8,7 +8,7 @@ foreground: '#F8EDE0'
 details: darker
 background_image:
   path: afterlight-solar-ember.jpg
-  opacity: 72
+  opacity: 20
 terminal_colors:
   normal:
     black: '#2D1D17'

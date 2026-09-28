@@ -15,15 +15,16 @@ Select **Copper Glow** in **Settings → Appearance → Themes**. The wallpaper 
 
 ## Afterlight collection
 
-Open [the Afterlight gallery](afterlight/index.html) to preview five more glow themes:
+Open [the Afterlight gallery](afterlight/index.html) to preview six more glow themes:
 
 - **Afterlight - Aurora Tide** — teal, ice blue, and violet
 - **Afterlight - Aurora Prism** — ice blue, lavender, and rose
 - **Afterlight - Aurora Canopy** — jade, lime, and soft gold
 - **Afterlight - Orchid Haze** — violet and blush
 - **Afterlight - Solar Ember** — copper, amber, and rose
+- **Afterlight - Ember Focus** — near-black with a restrained copper accent
 
-Each theme has an `afterlight-*.yaml` file and matching `afterlight-*.jpg` wallpaper in `afterlight/`. Copy all five pairs into `~/.warp/themes/` to keep them together in Warp's theme list, then select a theme in Warp:
+Each theme has an `afterlight-*.yaml` file and matching `afterlight-*.jpg` wallpaper in `afterlight/`. Copy all six pairs into `~/.warp/themes/` to keep them together in Warp's theme list, then select a theme in Warp:
 
 ```sh
 cp afterlight/afterlight-*.yaml afterlight/afterlight-*.jpg ~/.warp/themes/

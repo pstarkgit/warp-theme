@@ -1,0 +1,30 @@
+name: Afterlight - Ember Focus
+accent:
+  left: '#C66B32'
+  right: '#E48C48'
+cursor: '#E9A061'
+background: '#111113'
+foreground: '#E7E3DD'
+details: darker
+background_image:
+  path: afterlight-ember-focus.jpg
+  opacity: 20
+terminal_colors:
+  normal:
+    black: '#252427'
+    red: '#C7736B'
+    green: '#91AD88'
+    yellow: '#C7A16C'
+    blue: '#829EB2'
+    magenta: '#AC8DA9'
+    cyan: '#83AAA7'
+    white: '#CDC9C3'
+  bright:
+    black: '#777276'
+    red: '#E99A88'
+    green: '#B0C9A5'
+    yellow: '#E2BF86'
+    blue: '#A7BFD0'
+    magenta: '#C9A9C4'
+    cyan: '#A4C9C3'
+    white: '#F5F1EA'

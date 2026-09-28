@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the five Warp themes and their glow wallpapers on macOS."""
+"""Generate the Afterlight Warp themes and their glow wallpapers on macOS."""
 
 import math
 import struct
@@ -76,6 +76,7 @@ THEMES = [
     {
         "slug": "solar-ember",
         "name": "Solar Ember",
+        "wallpaper_opacity": 20,
         "base": "#170F0B",
         "foreground": "#F8EDE0",
         "accent": ("#EC874F", "#F5BE75"),
@@ -87,6 +88,22 @@ THEMES = [
         ],
         "normal": ["#2D1D17", "#E77A67", "#9EC198", "#E7B76F", "#88A9C4", "#C694AD", "#82C0BA", "#E5D2BE"],
         "bright": ["#8D7160", "#F5A48B", "#C0DBAE", "#FFD799", "#AEC9DF", "#E2B5CC", "#A9E1D7", "#FFF5E7"],
+    },
+    {
+        "slug": "ember-focus",
+        "name": "Ember Focus",
+        "wallpaper_opacity": 20,
+        "base": "#111113",
+        "foreground": "#E7E3DD",
+        "accent": ("#C66B32", "#E48C48"),
+        "cursor": "#E9A061",
+        "glows": [
+            ("#95502F", 0.02, 0.16, 0.27, 0.35, 0.33),
+            ("#C9773C", 1.02, 0.91, 0.37, 0.34, 0.34),
+            ("#445366", 0.82, 0.04, 0.42, 0.28, 0.19),
+        ],
+        "normal": ["#252427", "#C7736B", "#91AD88", "#C7A16C", "#829EB2", "#AC8DA9", "#83AAA7", "#CDC9C3"],
+        "bright": ["#777276", "#E99A88", "#B0C9A5", "#E2BF86", "#A7BFD0", "#C9A9C4", "#A4C9C3", "#F5F1EA"],
     },
 ]
 

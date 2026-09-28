@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Afterlight — Five glow themes for Warp</title>
+  <title>Afterlight — Six glow themes for Warp</title>
   <style>
     :root {
       --bg: #090d11;
@@ -208,7 +208,7 @@
     .footer { justify-content: space-between; gap: 10px; padding-top: 36px; color: #697d7a; font-size: 11px; }
     @media (max-width: 900px) {
       .gallery { grid-template-columns: 1fr; }
-      .theme-list { grid-template-columns: repeat(5, minmax(142px, 1fr)); overflow-x: auto; }
+      .theme-list { grid-template-columns: repeat(6, minmax(142px, 1fr)); overflow-x: auto; }
       .theme-card { min-width: 142px; }
       .card-art { flex-basis: 45px; height: 50px; }
       .card-type { display: none; }
@@ -234,24 +234,24 @@
   <main class="page">
     <header class="topbar">
       <div class="brand"><div class="mark">✦</div><div><div class="brand-name">AFTERLIGHT</div><div class="brand-sub">Glow themes for Warp</div></div></div>
-      <div class="top-meta"><i aria-hidden="true"></i><span>Collection 01 / Five themes</span></div>
+      <div class="top-meta"><i aria-hidden="true"></i><span>Collection 01 / Six themes</span></div>
     </header>
 
     <section class="intro" aria-labelledby="page-title">
       <div class="eyebrow">Inspired by Copper Glow · Built for the night shift</div>
       <h1 id="page-title">A little light<br><span>in the dark.</span></h1>
-      <p>Five rich, readable glow themes for Warp. <strong>Three chase the colors of the aurora</strong>; two wander into orchid and ember light. Choose one and bring its wallpaper and palette into your terminal.</p>
+      <p>Six rich, readable glow themes for Warp. <strong>Three chase the colors of the aurora</strong>; three explore orchid, amber, and copper light. Choose one and bring its wallpaper and palette into your terminal.</p>
     </section>
 
     <section class="gallery" aria-label="Theme gallery">
       <aside>
-        <div class="section-heading"><h2>Explore the collection</h2><span class="mono">01—05</span></div>
+        <div class="section-heading"><h2>Explore the collection</h2><span class="mono">01—06</span></div>
         <div class="theme-list" id="theme-list"></div>
         <p class="side-note">Select a theme to see its terminal preview, full palette, and install files.</p>
       </aside>
 
       <div class="feature" aria-live="polite">
-        <div class="hero-meta"><span class="pill" id="theme-type">Aurora series</span><span class="separator">/</span><span id="theme-number">01 of 05</span></div>
+        <div class="hero-meta"><span class="pill" id="theme-type">Aurora series</span><span class="separator">/</span><span id="theme-number">01 of 06</span></div>
         <h2 class="hero-title" id="theme-name">Afterlight - Aurora Tide</h2>
         <p class="hero-description" id="theme-description"></p>
         <div class="preview-frame">
@@ -295,7 +295,7 @@
         <div class="step"><b class="mono">03</b><span>In Warp, open <code>Settings → Appearance → Themes</code> and select the theme.</span></div>
       </div>
     </section>
-    <footer class="footer"><span>AFTERLIGHT / Warp theme studies</span><span>Five ways to keep the glow.</span></footer>
+    <footer class="footer"><span>AFTERLIGHT / Warp theme studies</span><span>Six ways to keep the glow.</span></footer>
   </main>
   <script>
     const themes = [
@@ -303,7 +303,8 @@
       { slug: "aurora-prism", name: "Aurora Prism", type: "Aurora series", description: "Soft ice blue folds into lavender and rose. A subtle aurora glow against a dark indigo center.", base: "#0C0D1C", fg: "#EEEFFD", accent: "#86B5FF", accent2: "#DBA6F7", wallpaperOpacity: 20, palette: ["#0C0D1C", "#69B9FF", "#A186F7", "#EE82BA", "#EEEFFD"] },
       { slug: "aurora-canopy", name: "Aurora Canopy", type: "Aurora series", description: "Luminous jade and lime drift through a forest-dark sky, touched by a soft gold horizon.", base: "#0D1510", fg: "#ECF2E5", accent: "#A7D774", accent2: "#71CDB1", palette: ["#0D1510", "#99E274", "#4ED5AE", "#E4D475", "#ECF2E5"] },
       { slug: "orchid-haze", name: "Orchid Haze", type: "Glow series", description: "A velvet violet dusk with orchid and blush light blooming at the edges of the terminal.", base: "#15101A", fg: "#F4EBF5", accent: "#D68EDE", accent2: "#F3ADC8", palette: ["#15101A", "#B87BEE", "#EE88C3", "#777DDC", "#F4EBF5"] },
-      { slug: "solar-ember", name: "Solar Ember", type: "Glow series", description: "Copper Glow's sunlit cousin: deep charcoal-brown, amber heat, and a gentle rose afterglow.", base: "#170F0B", fg: "#F8EDE0", accent: "#EC874F", accent2: "#F5BE75", palette: ["#170F0B", "#F4773E", "#F9B35D", "#C6687B", "#F8EDE0"] }
+      { slug: "solar-ember", name: "Solar Ember", type: "Glow series", description: "Copper Glow's sunlit cousin: deep charcoal-brown, a subtle amber light, and a gentle rose afterglow.", base: "#170F0B", fg: "#F8EDE0", accent: "#EC874F", accent2: "#F5BE75", wallpaperOpacity: 20, palette: ["#170F0B", "#F4773E", "#F9B35D", "#C6687B", "#F8EDE0"] },
+      { slug: "ember-focus", name: "Ember Focus", type: "Focus series", description: "Near-black canvas, soft ivory text, and a restrained copper accent inspired by your reference. The glow stays at the edges so the work stays in focus.", base: "#111113", fg: "#E7E3DD", accent: "#C66B32", accent2: "#E48C48", wallpaperOpacity: 20, palette: ["#111113", "#C66B32", "#E48C48", "#91AD88", "#E7E3DD"] }
     ];
     function wallpaperBackground(theme) {
       const image = `url("afterlight-${theme.slug}.png")`;
@@ -318,7 +319,7 @@
       button.type = "button";
       button.className = "theme-card";
       button.setAttribute("aria-label", `Preview ${theme.name}`);
-      button.innerHTML = `<span class="card-top"><span class="card-art" aria-hidden="true"></span><span><span class="card-num mono">${String(index + 1).padStart(2, "0")} / 05</span><span class="card-name"></span><span class="card-type"></span></span></span>`;
+      button.innerHTML = `<span class="card-top"><span class="card-art" aria-hidden="true"></span><span><span class="card-num mono">${String(index + 1).padStart(2, "0")} / ${String(themes.length).padStart(2, "0")}</span><span class="card-name"></span><span class="card-type"></span></span></span>`;
       button.querySelector(".card-art").style.backgroundImage = wallpaperBackground(theme);
       button.querySelector(".card-name").textContent = `Afterlight - ${theme.name}`;
       button.querySelector(".card-type").textContent = theme.type;
@@ -333,7 +334,7 @@
       document.documentElement.style.setProperty("--theme-bg", theme.base);
       document.documentElement.style.setProperty("--theme-fg", theme.fg);
       document.getElementById("theme-type").textContent = theme.type;
-      document.getElementById("theme-number").textContent = `${String(index + 1).padStart(2, "0")} of 05`;
+      document.getElementById("theme-number").textContent = `${String(index + 1).padStart(2, "0")} of ${String(themes.length).padStart(2, "0")}`;
       document.getElementById("theme-name").textContent = `Afterlight - ${theme.name}`;
       document.getElementById("theme-description").textContent = theme.description;
       document.getElementById("terminal").style.backgroundImage = wallpaperBackground(theme);
