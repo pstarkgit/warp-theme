@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Afterlight — Five glow themes for Warp</title>
+  <style>
+    :root {
+      --bg: #090d11;
+      --panel: #10151a;
+      --line: #283036;
+      --text: #edf2ef;
+      --muted: #9ba9aa;
+      --accent: #5ccdb5;
+      --accent-2: #a6e3d3;
+      --theme-bg: #091316;
+      --theme-fg: #e5f5ef;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; }
+    button, a { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    .page {
+      width: min(1480px, 100%);
+      min-height: 100vh;
+      margin: auto;
+      padding: 26px clamp(18px, 3.6vw, 58px) 50px;
+      position: relative;
+      isolation: isolate;
+    }
+    .page::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 48% 30% at 8% 2%, #438b7e16, transparent),
+        radial-gradient(ellipse 40% 26% at 97% 93%, #ad779416, transparent);
+    }
+    .topbar, .brand, .top-meta, .hero-meta, .hero-actions, .section-heading,
+    .card-top, .palette, .preview-bar, .preview-tab, .term-row, .step, .footer {
+      display: flex;
+      align-items: center;
+    }
+    .topbar {
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #ffffff18;
+    }
+    .brand { gap: 12px; }
+    .mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: grid; place-items: center;
+      color: #0b1315;
+      font-weight: 900;
+      font-size: 21px;
+      background: linear-gradient(135deg, #a7f7d8 5%, #82bfff 55%, #d4a4f2);
+      box-shadow: 0 0 28px #70c4b64d;
+    }
+    .brand-name { font-size: 13px; font-weight: 800; letter-spacing: .19em; }
+    .brand-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    .top-meta { gap: 10px; color: #a9b9b7; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .top-meta i { width: 7px; height: 7px; border-radius: 50%; background: #8ad7b6; box-shadow: 0 0 11px #8ad7b6; }
+    .intro { padding: 43px 0 31px; }
+    .eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .23em; text-transform: uppercase; color: #90c7bc; }
+    h1 {
+      margin: 15px 0 15px;
+      font-size: clamp(44px, 6vw, 88px);
+      line-height: .98;
+      letter-spacing: -.07em;
+      font-weight: 760;
+    }
+    h1 span {
+      background: linear-gradient(100deg, #adebd0 4%, #9fc7f3 47%, #dfb5e6 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .intro p { max-width: 620px; margin: 0; color: #a8b4b3; line-height: 1.65; font-size: 15px; }
+    .intro strong { color: #dceee7; font-weight: 600; }
+    .gallery { display: grid; grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); gap: clamp(22px, 3vw, 44px); }
+    .section-heading { justify-content: space-between; gap: 10px; padding: 0 0 14px; }
+    .section-heading h2 { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .2em; }
+    .section-heading span { font-size: 11px; color: #839392; }
+    .theme-list { display: grid; gap: 9px; }
+    .theme-card {
+      width: 100%; display: block; text-align: left;
+      border: 1px solid #2b3438; border-radius: 15px;
+      background: #12191c; color: var(--text);
+      padding: 9px; transition: border-color .18s, background .18s, transform .18s;
+    }
+    .theme-card:hover { border-color: #658a87; transform: translateX(3px); }
+    .theme-card[aria-pressed="true"] { border-color: var(--accent); background: #1b2527; box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent), transparent 78%); }
+    .card-top { gap: 12px; }
+    .card-art {
+      flex: 0 0 72px; height: 65px; border-radius: 9px;
+      background-size: cover; background-position: center;
+      border: 1px solid #ffffff15;
+    }
+    .card-num { display: block; color: #7f9695; font-size: 10px; letter-spacing: .09em; margin-bottom: 4px; }
+    .card-name { display: block; font-weight: 700; font-size: 14px; }
+    .card-type { display: block; color: #91a39f; font-size: 11px; margin-top: 5px; }
+    .side-note { padding: 16px 3px; color: #819390; font-size: 12px; line-height: 1.6; }
+    .feature { min-width: 0; }
+    .hero-meta { gap: 10px; color: #9fb3b0; font-size: 11px; text-transform: uppercase; letter-spacing: .13em; }
+    .hero-meta .pill { color: #d2f3e8; padding: 6px 10px; border: 1px solid #84c9bb55; background: #85cdb520; border-radius: 30px; letter-spacing: .09em; }
+    .hero-meta .separator { color: #576462; }
+    .hero-title { font-size: clamp(33px, 3.6vw, 52px); letter-spacing: -.05em; line-height: 1; margin: 17px 0 10px; }
+    .hero-description { font-size: 14px; color: #a4b3b2; line-height: 1.6; min-height: 46px; margin: 0 0 20px; }
+    .preview-frame {
+      padding: 9px;
+      border: 1px solid #526a685e;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #354a495c, #1a2225 28%, #13191d 75%, #39414955);
+      box-shadow: 0 26px 80px #0008, 0 0 58px color-mix(in srgb, var(--accent), transparent 94%);
+    }
+    .preview-window {
+      overflow: hidden; border-radius: 10px; border: 1px solid #ffffff12;
+      background: var(--theme-bg);
+    }
+    .preview-bar {
+      height: 43px; gap: 8px;
+      padding: 0 14px;
+      border-bottom: 1px solid #ffffff1d;
+      background: #12171ad9;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #667375; }
+    .dot:first-child { background: #d97678; }
+    .dot:nth-child(2) { background: #deb576; }
+    .dot:nth-child(3) { background: #88bb99; }
+    .preview-tab {
+      margin-left: 15px; gap: 8px; padding: 7px 12px;
+      font-size: 11px; color: #c5d2d1; background: #ffffff10;
+      border-radius: 7px;
+    }
+    .preview-tab b { font-size: 13px; color: var(--accent); }
+    .preview-plus { color: #83918e; font-size: 16px; margin-left: 6px; }
+    .terminal {
+      height: clamp(286px, 35vw, 410px);
+      position: relative; overflow: hidden;
+      padding: clamp(19px, 3vw, 34px);
+      color: var(--theme-fg);
+      background-size: cover;
+      background-position: center;
+      transition: background-image .25s ease;
+    }
+    .terminal::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, #050b0bc7, #050b0b3b 52%, #050b0b0d);
+    }
+    .terminal-content { position: relative; z-index: 1; font-size: clamp(10px, 1.04vw, 13px); line-height: 1.77; white-space: nowrap; }
+    .term-row { gap: 9px; }
+    .prompt { color: var(--accent); font-weight: 700; }
+    .path { color: #b7cfc9; }
+    .dim { color: #94aaa8; }
+    .term-gap { height: 14px; }
+    .file { color: #bbc9c9; }
+    .file.green, .stat { color: var(--accent-2); }
+    .file.blue { color: #99c3ee; }
+    .cursor { width: 7px; height: 15px; display: inline-block; vertical-align: -3px; background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); }
+    .preview-status {
+      display: flex; justify-content: space-between; gap: 10px; padding: 9px 18px;
+      border-top: 1px solid #ffffff17; color: #adbab8; background: #141c1dd9; font-size: 10px;
+    }
+    .preview-status span:first-child { color: var(--accent-2); }
+    .details { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; padding: 22px 0 0; }
+    .label { display: block; color: #879995; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
+    .palette { gap: 7px; flex-wrap: wrap; }
+    .swatch {
+      width: 31px; height: 31px; border-radius: 8px; border: 1px solid #ffffff29;
+      position: relative;
+    }
+    .swatch:hover::after {
+      content: attr(title); position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%);
+      border: 1px solid #50615c; border-radius: 5px; background: #1c2828; color: white;
+      font: 10px "SFMono-Regular", Consolas, monospace; white-space: nowrap; padding: 5px 7px;
+      pointer-events: none;
+    }
+    .base-value { color: #cbd9d3; font-size: 12px; }
+    .hero-actions { gap: 9px; flex-wrap: wrap; margin-top: 24px; }
+    .button {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; border-radius: 9px; padding: 11px 14px;
+      font-size: 12px; font-weight: 700;
+      transition: transform .18s, border-color .18s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { color: #0b1919; background: var(--accent-2); border: 1px solid var(--accent-2); }
+    .button.secondary { color: #d9e9e4; background: #172022; border: 1px solid #495c5a; }
+    .button svg { width: 14px; height: 14px; }
+    .install {
+      margin-top: 48px; padding-top: 22px; border-top: 1px solid #ffffff1a;
+      display: grid; grid-template-columns: 170px 1fr; gap: 26px;
+    }
+    .install h2 { margin: 2px 0 0; font-size: 19px; letter-spacing: -.03em; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .step { align-items: flex-start; gap: 10px; color: #a9b8b4; font-size: 12px; line-height: 1.6; }
+    .step b { flex: 0 0 auto; color: #a8dfcb; font-size: 12px; }
+    code { font-size: .95em; color: #d7ede4; }
+    .footer { justify-content: space-between; gap: 10px; padding-top: 36px; color: #697d7a; font-size: 11px; }
+    @media (max-width: 900px) {
+      .gallery { grid-template-columns: 1fr; }
+      .theme-list { grid-template-columns: repeat(5, minmax(142px, 1fr)); overflow-x: auto; }
+      .theme-card { min-width: 142px; }
+      .card-art { flex-basis: 45px; height: 50px; }
+      .card-type { display: none; }
+      .side-note { display: none; }
+      .terminal-content { font-size: 12px; }
+    }
+    @media (max-width: 640px) {
+      .top-meta { display: none; }
+      .intro { padding-top: 32px; }
+      .details { grid-template-columns: 1fr; gap: 6px; }
+      .terminal { height: 320px; padding: 20px 14px; }
+      .terminal-content { font-size: 10px; }
+      .install { grid-template-columns: 1fr; gap: 16px; }
+      .steps { grid-template-columns: 1fr; gap: 10px; }
+      .preview-status span:last-child { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand"><div class="mark">✦</div><div><div class="brand-name">AFTERLIGHT</div><div class="brand-sub">Glow themes for Warp</div></div></div>
+      <div class="top-meta"><i aria-hidden="true"></i><span>Collection 01 / Five themes</span></div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow">Inspired by Copper Glow · Built for the night shift</div>
+      <h1 id="page-title">A little light<br><span>in the dark.</span></h1>
+      <p>Five rich, readable glow themes for Warp. <strong>Three chase the colors of the aurora</strong>; two wander into orchid and ember light. Choose one and bring its wallpaper and palette into your terminal.</p>
+    </section>
+
+    <section class="gallery" aria-label="Theme gallery">
+      <aside>
+        <div class="section-heading"><h2>Explore the collection</h2><span class="mono">01—05</span></div>
+        <div class="theme-list" id="theme-list"></div>
+        <p class="side-note">Select a theme to see its terminal preview, full palette, and install files.</p>
+      </aside>
+
+      <div class="feature" aria-live="polite">
+        <div class="hero-meta"><span class="pill" id="theme-type">Aurora series</span><span class="separator">/</span><span id="theme-number">01 of 05</span></div>
+        <h2 class="hero-title" id="theme-name">Afterlight - Aurora Tide</h2>
+        <p class="hero-description" id="theme-description"></p>
+        <div class="preview-frame">
+          <div class="preview-window">
+            <div class="preview-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="preview-tab"><b>❯</b> ~/night-shift</span><span class="preview-plus">+</span></div>
+            <div class="terminal" id="terminal">
+              <div class="terminal-content mono">
+                <div class="term-row"><span class="prompt">❯</span><span class="path">~/night-shift</span><span>git status --short</span></div>
+                <div class="term-row"><span class="dim"> M</span><span class="file">src/sky.ts</span></div>
+                <div class="term-row"><span class="dim">??</span><span class="file blue">themes/afterlight.yaml</span></div>
+                <div class="term-gap"></div>
+                <div class="term-row"><span class="prompt">❯</span><span class="path">~/night-shift</span><span>npm run build</span></div>
+                <div class="term-row"><span class="dim">›</span><span>Compiling the good stuff...</span></div>
+                <div class="term-row"><span class="stat">✓</span><span>Build complete in 1.4s</span></div>
+                <div class="term-gap"></div>
+                <div class="term-row"><span class="prompt">❯</span><span class="path">~/night-shift</span><span>ls themes/</span></div>
+                <div class="term-row"><span class="file green">aurora-tide</span><span class="file blue">aurora-prism</span><span class="file">solar-ember</span></div>
+                <div class="term-gap"></div>
+                <div class="term-row"><span class="prompt">❯</span><span class="path">~/night-shift</span><span class="cursor" aria-label="cursor"></span></div>
+              </div>
+            </div>
+            <div class="preview-status mono"><span id="status-name">✦ AURORA TIDE</span><span>UTF-8 &nbsp;·&nbsp; zsh &nbsp;·&nbsp; 100%</span></div>
+          </div>
+        </div>
+        <div class="details">
+          <div><span class="label">Color story</span><div class="palette" id="palette"></div></div>
+          <div><span class="label">Canvas</span><span class="base-value mono" id="base-value"></span></div>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" id="yaml-link" download href="afterlight-aurora-tide.yaml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Theme YAML</a>
+          <a class="button secondary" id="wallpaper-link" download href="afterlight-aurora-tide.jpg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1"/><path d="m3 16 5-5 4 4 3-3 6 6"/></svg>Glow wallpaper</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="install" aria-labelledby="install-title">
+      <h2 id="install-title">Make it yours.</h2>
+      <div class="steps">
+        <div class="step"><b class="mono">01</b><span>Download the theme YAML and matching wallpaper above.</span></div>
+        <div class="step"><b class="mono">02</b><span>Put both files in <code>~/.warp/themes/</code> with their original names.</span></div>
+        <div class="step"><b class="mono">03</b><span>In Warp, open <code>Settings → Appearance → Themes</code> and select the theme.</span></div>
+      </div>
+    </section>
+    <footer class="footer"><span>AFTERLIGHT / Warp theme studies</span><span>Five ways to keep the glow.</span></footer>
+  </main>
+  <script>
+    const themes = [
+      { slug: "aurora-tide", name: "Aurora Tide", type: "Aurora series", description: "Sea-glass green, glacial blue, and a low violet shimmer. The calmest way to keep the northern lights at your desk.", base: "#091316", fg: "#E5F5EF", accent: "#5CCDB5", accent2: "#A6E3D3", palette: ["#091316", "#3EE0BA", "#87B5FC", "#B18AF4", "#E5F5EF"] },
+      { slug: "aurora-prism", name: "Aurora Prism", type: "Aurora series", description: "Electric ice blue folds into lavender and rose. A brighter, more playful aurora with a dark indigo center.", base: "#0C0D1C", fg: "#EEEFFD", accent: "#86B5FF", accent2: "#DBA6F7", palette: ["#0C0D1C", "#69B9FF", "#A186F7", "#EE82BA", "#EEEFFD"] },
+      { slug: "aurora-canopy", name: "Aurora Canopy", type: "Aurora series", description: "Luminous jade and lime drift through a forest-dark sky, touched by a soft gold horizon.", base: "#0D1510", fg: "#ECF2E5", accent: "#A7D774", accent2: "#71CDB1", palette: ["#0D1510", "#99E274", "#4ED5AE", "#E4D475", "#ECF2E5"] },
+      { slug: "orchid-haze", name: "Orchid Haze", type: "Glow series", description: "A velvet violet dusk with orchid and blush light blooming at the edges of the terminal.", base: "#15101A", fg: "#F4EBF5", accent: "#D68EDE", accent2: "#F3ADC8", palette: ["#15101A", "#B87BEE", "#EE88C3", "#777DDC", "#F4EBF5"] },
+      { slug: "solar-ember", name: "Solar Ember", type: "Glow series", description: "Copper Glow's sunlit cousin: deep charcoal-brown, amber heat, and a gentle rose afterglow.", base: "#170F0B", fg: "#F8EDE0", accent: "#EC874F", accent2: "#F5BE75", palette: ["#170F0B", "#F4773E", "#F9B35D", "#C6687B", "#F8EDE0"] }
+    ];
+    const list = document.getElementById("theme-list");
+    let selected = 0;
+    themes.forEach((theme, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "theme-card";
+      button.setAttribute("aria-label", `Preview ${theme.name}`);
+      button.innerHTML = `<span class="card-top"><span class="card-art" aria-hidden="true"></span><span><span class="card-num mono">${String(index + 1).padStart(2, "0")} / 05</span><span class="card-name"></span><span class="card-type"></span></span></span>`;
+      button.querySelector(".card-art").style.backgroundImage = `url("afterlight-${theme.slug}.png")`;
+      button.querySelector(".card-name").textContent = `Afterlight - ${theme.name}`;
+      button.querySelector(".card-type").textContent = theme.type;
+      button.addEventListener("click", () => selectTheme(index));
+      list.append(button);
+    });
+    function selectTheme(index) {
+      selected = index;
+      const theme = themes[index];
+      document.documentElement.style.setProperty("--accent", theme.accent);
+      document.documentElement.style.setProperty("--accent-2", theme.accent2);
+      document.documentElement.style.setProperty("--theme-bg", theme.base);
+      document.documentElement.style.setProperty("--theme-fg", theme.fg);
+      document.getElementById("theme-type").textContent = theme.type;
+      document.getElementById("theme-number").textContent = `${String(index + 1).padStart(2, "0")} of 05`;
+      document.getElementById("theme-name").textContent = `Afterlight - ${theme.name}`;
+      document.getElementById("theme-description").textContent = theme.description;
+      document.getElementById("terminal").style.backgroundImage = `url("afterlight-${theme.slug}.png")`;
+      document.getElementById("status-name").textContent = `✦ AFTERLIGHT - ${theme.name.toUpperCase()}`;
+      document.getElementById("base-value").textContent = theme.base;
+      document.getElementById("yaml-link").href = `afterlight-${theme.slug}.yaml`;
+      document.getElementById("wallpaper-link").href = `afterlight-${theme.slug}.jpg`;
+      document.getElementById("palette").replaceChildren(...theme.palette.map(color => {
+        const swatch = document.createElement("span");
+        swatch.className = "swatch";
+        swatch.style.background = color;
+        swatch.title = color;
+        swatch.setAttribute("aria-label", color);
+        return swatch;
+      }));
+      [...list.children].forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
+    }
+    list.addEventListener("keydown", event => {
+      if (event.key !== "ArrowDown" && event.key !== "ArrowUp" && event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      const next = (selected + (event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : -1) + themes.length) % themes.length;
+      selectTheme(next);
+      list.children[next].focus();
+    });
+    selectTheme(0);
+  </script>
+</body>
+</html>

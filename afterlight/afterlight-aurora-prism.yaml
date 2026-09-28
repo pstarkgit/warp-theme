@@ -1,0 +1,30 @@
+name: Afterlight - Aurora Prism
+accent:
+  left: '#86B5FF'
+  right: '#DBA6F7'
+cursor: '#F4C8F4'
+background: '#0C0D1C'
+foreground: '#EEEFFD'
+details: darker
+background_image:
+  path: afterlight-aurora-prism.jpg
+  opacity: 72
+terminal_colors:
+  normal:
+    black: '#191A35'
+    red: '#E48AA8'
+    green: '#8CCDB9'
+    yellow: '#DCC595'
+    blue: '#86B5FA'
+    magenta: '#B49AEF'
+    cyan: '#83CADF'
+    white: '#D5D7ED'
+  bright:
+    black: '#666981'
+    red: '#F6B2CC'
+    green: '#B0EAD6'
+    yellow: '#F4DCB2'
+    blue: '#AFD0FF'
+    magenta: '#D8BDFC'
+    cyan: '#AFEAF4'
+    white: '#F9F7FF'

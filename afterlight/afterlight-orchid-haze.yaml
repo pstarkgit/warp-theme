@@ -1,0 +1,30 @@
+name: Afterlight - Orchid Haze
+accent:
+  left: '#D68EDE'
+  right: '#F3ADC8'
+cursor: '#FFD1E8'
+background: '#15101A'
+foreground: '#F4EBF5'
+details: darker
+background_image:
+  path: afterlight-orchid-haze.jpg
+  opacity: 72
+terminal_colors:
+  normal:
+    black: '#2A2030'
+    red: '#E888A9'
+    green: '#A6C99E'
+    yellow: '#D9B689'
+    blue: '#9CA9DC'
+    magenta: '#C797D6'
+    cyan: '#87BFC7'
+    white: '#E1D3E3'
+  bright:
+    black: '#82728A'
+    red: '#F5B2CA'
+    green: '#C8E4BB'
+    yellow: '#F1D5AC'
+    blue: '#C0C9EF'
+    magenta: '#E9BDF2'
+    cyan: '#AEE2E4'
+    white: '#FFF5FF'

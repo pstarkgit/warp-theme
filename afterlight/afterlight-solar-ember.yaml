@@ -1,0 +1,30 @@
+name: Afterlight - Solar Ember
+accent:
+  left: '#EC874F'
+  right: '#F5BE75'
+cursor: '#FFD393'
+background: '#170F0B'
+foreground: '#F8EDE0'
+details: darker
+background_image:
+  path: afterlight-solar-ember.jpg
+  opacity: 72
+terminal_colors:
+  normal:
+    black: '#2D1D17'
+    red: '#E77A67'
+    green: '#9EC198'
+    yellow: '#E7B76F'
+    blue: '#88A9C4'
+    magenta: '#C694AD'
+    cyan: '#82C0BA'
+    white: '#E5D2BE'
+  bright:
+    black: '#8D7160'
+    red: '#F5A48B'
+    green: '#C0DBAE'
+    yellow: '#FFD799'
+    blue: '#AEC9DF'
+    magenta: '#E2B5CC'
+    cyan: '#A9E1D7'
+    white: '#FFF5E7'

@@ -1,0 +1,30 @@
+name: Afterlight - Aurora Tide
+accent:
+  left: '#5CCDB5'
+  right: '#A6E3D3'
+cursor: '#B6F4DF'
+background: '#091316'
+foreground: '#E5F5EF'
+details: darker
+background_image:
+  path: afterlight-aurora-tide.jpg
+  opacity: 72
+terminal_colors:
+  normal:
+    black: '#152226'
+    red: '#E17C87'
+    green: '#76CBA8'
+    yellow: '#D6C278'
+    blue: '#7DAFE0'
+    magenta: '#AB91D8'
+    cyan: '#72D2D6'
+    white: '#C7DDD8'
+  bright:
+    black: '#627579'
+    red: '#F4A4A6'
+    green: '#A3E4C2'
+    yellow: '#F2DFA2'
+    blue: '#A7CDF5'
+    magenta: '#D1B4F2'
+    cyan: '#A2EAEB'
+    white: '#F1FAF5'

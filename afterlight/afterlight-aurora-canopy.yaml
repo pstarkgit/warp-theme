@@ -1,0 +1,30 @@
+name: Afterlight - Aurora Canopy
+accent:
+  left: '#A7D774'
+  right: '#71CDB1'
+cursor: '#D8EDA2'
+background: '#0D1510'
+foreground: '#ECF2E5'
+details: darker
+background_image:
+  path: afterlight-aurora-canopy.jpg
+  opacity: 72
+terminal_colors:
+  normal:
+    black: '#1B291F'
+    red: '#DB8B7D'
+    green: '#A1D284'
+    yellow: '#DDC87C'
+    blue: '#8FAFD2'
+    magenta: '#B5A0C8'
+    cyan: '#79C9B3'
+    white: '#D7E1CF'
+  bright:
+    black: '#718070'
+    red: '#EEB0A2'
+    green: '#C4E7A6'
+    yellow: '#F2E2A2'
+    blue: '#B3CBE9'
+    magenta: '#D6BBE5'
+    cyan: '#A4E8D4'
+    white: '#F7F9EB'
